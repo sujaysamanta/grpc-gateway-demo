@@ -41,7 +41,9 @@ you should see a response similar to this
 ```
 
 
-✅ Note: Compare the above responses, and you will see when the header `x-api-version` is omitted it defaults `"1.0.0"`
+✅ Note:
+   you will see from the above response that
+   when the header `x-api-version` is omitted it defaults `"1.0.0"`
 
 ©️ [️Hashicorp](https://www.hashicorp.com/)
 

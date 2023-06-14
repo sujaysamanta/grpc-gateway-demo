@@ -42,6 +42,8 @@ func main() {
 	server := grpc.NewServer()
 	// register the GreeterServerImpl on the gRPC server
 	gen.RegisterGreeterServer(server, &GreeterServerImpl{})
+
+	log.Println("Starting gRPC server on http://0.0.0.0:8080")
 	// start listening on port :8080 for a tcp connection
 	if l, err := net.Listen("tcp", ":8080"); err != nil {
 		log.Fatal("error in listening on port :8080", err)
@@ -52,5 +54,4 @@ func main() {
 		}
 	}
 
-	log.Println("Serving gRPC-Gateway on http://0.0.0.0:8081")
 }
