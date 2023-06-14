@@ -1,5 +1,5 @@
 # grpc-gateway-demo
-A simple repository to show case gRPC gateway
+A simple repository to showcase gRPC gateway
 
 ## Steps to Start the application
 
@@ -41,8 +41,8 @@ you should see a response similar to this
 ```
 
 
-✅ Note: Compare the above responses and you will see when the header `x-api-version` is omitted it defaults `"1.0.0"`
+✅ Note: Compare the above responses, and you will see when the header `x-api-version` is omitted it defaults `"1.0.0"`
 
 ©️ [️Hashicorp](https://www.hashicorp.com/)
 
-📧 [sujay.samanta@hashicorp.com](sujay.samanta@hashicorp.com)
+📧 [sujay.samanta@hashicorp.com](mailto:sujay.samanta@hashicorp.com)
