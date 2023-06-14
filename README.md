@@ -1,7 +1,7 @@
-# grpc-gateway-demo
+# gRPC-Gateway-Demo
 A simple repository to showcase gRPC gateway
 
-## Steps to Start the application
+## Steps to start the application
 
 steps to run the application is as follows
 
