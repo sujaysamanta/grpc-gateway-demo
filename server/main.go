@@ -23,6 +23,17 @@ func getApiVersion(ctx context.Context) string {
 	return apiVersion
 }
 
+func setPagingAndSortingInfo() metadata.MD {
+
+	md := metadata.Pairs(
+		"x-page-no", "2",
+		"x-page-size", "10",
+		"x-total-elements", "50",
+		"x-total-pages", "5")
+	return md
+
+}
+
 // GreeterServerImpl will implement the service defined in protocol buffer definitions
 type GreeterServerImpl struct {
 	gen.UnimplementedGreeterServer
@@ -32,6 +43,10 @@ type GreeterServerImpl struct {
 // This will take HelloRequest message and return HelloReply
 func (g *GreeterServerImpl) SayHello(ctx context.Context, request *gen.HelloRequest) (*gen.HelloReply, error) {
 	version := getApiVersion(ctx)
+	err := grpc.SendHeader(ctx, setPagingAndSortingInfo())
+	if err != nil {
+		return nil, err
+	}
 	return &gen.HelloReply{
 		Message:    fmt.Sprintf("hello %s", request.Name),
 		ApiVersion: version,
