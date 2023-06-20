@@ -12,7 +12,9 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"strconv"
 	"strings"
+	"time"
 )
 
 var DefaultApiVersion = "1.0.0"
@@ -64,6 +66,7 @@ func defaultToVersion(ctx context.Context, request *http.Request) metadata.MD {
 func SetPagingAndSortingRelatedInfo(ctx context.Context, writer http.ResponseWriter, message proto.Message) error {
 	writer.Header().Set("x-pagable-resource", "true")
 	writer.Header().Set("x-sortable-resource", "true")
+	writer.Header().Set("x-resposne-returned-at", strconv.FormatInt(time.Now().UnixMilli(), 10))
 	err := httpResponseHeaderModifier(ctx, writer, message)
 	if err != nil {
 		return err
@@ -82,7 +85,7 @@ func httpResponseHeaderModifier(ctx context.Context, writer http.ResponseWriter,
 			writer.Header().Set(header, md.HeaderMD.Get(header)[FirstItem])
 			md.HeaderMD.Delete(header)
 		}
-		writer.Header().Del(strings.ToTitle("Grpc-Metadata-"+header))
+		writer.Header().Del(strings.ToTitle("Grpc-Metadata-" + header))
 	}
 	return nil
 
